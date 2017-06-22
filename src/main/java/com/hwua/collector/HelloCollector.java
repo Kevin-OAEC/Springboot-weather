@@ -43,6 +43,11 @@ public class HelloCollector {
         return "index";
     }
 
+    /**
+     * 将天气Code转换为字体图标的class
+     * @param code
+     * @return
+     */
     private String parseCode(String code){
         int i = Integer.parseInt(code);
         switch (i){
