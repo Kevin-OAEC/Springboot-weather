@@ -38,6 +38,9 @@
                 </tbody>
             </table>
         </div>
+        <div class="info">
+            <p th:text="'今天：现在'+${weather.now.cond.txt}+'。最高气温 '+${weather.daily_forecast[0].tmp.max}+'℃。今晚'+${weather.daily_forecast[0].cond.txt_n}+'，最低气温 '+${weather.daily_forecast[0].tmp.min}+'℃。'"></p>
+        </div>
         <div class="daily_forecast">
             <div th:each="df,dfStat : ${weather.daily_forecast}">
                 <span class="t-center w-2 fs-14" th:text="${#strings.substring(df.date,5)}"></span>
