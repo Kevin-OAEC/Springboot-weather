@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <title th:text="${weather.basic.city+'的天气'}"></title>
+    <link href="//cdn.bootcss.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet"/>
+    <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+    <link th:href="@{../css/iconfont.css}" rel="stylesheet"/>
+    <link th:href="@{../css/index.css}" rel="stylesheet"/>
+</head>
+<body>
+    <div class="container">
+        <div class="now">
+            <p th:text="${weather.basic.city}"></p>
+            <p th:text="${weather.basic.update.loc}"></p>
+            <i th:class="${weather.now.cond.code} +' iconfont big-icon'"></i>
+            <p th:text="${weather.now.cond.txt}"></p>
+            <p class="tmp" th:text="${weather.now.tmp+'℃'}"></p>
+            <p th:text="${weather.now.wind.dir}+${weather.now.wind.sc}+'级'"></p>
+        </div>
+        <div class="hourly_forecast">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="t-center">时间</th>
+                        <th class="t-center">温度</th>
+                        <th class="t-center">降水概率</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="hf,hfStat : ${weather.hourly_forecast}">
+                        <td th:text="${#strings.substring(hf.date,11)}"></td>
+                        <td th:text="${hf.tmp}+'℃'"></td>
+                        <td th:text="${hf.pop}+'%'"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="daily_forecast">
+
+        </div>
+    </div>
+</body>
+</html>
