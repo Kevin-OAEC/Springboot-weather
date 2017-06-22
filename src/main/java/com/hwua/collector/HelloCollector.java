@@ -7,11 +7,11 @@ import com.hwua.util.HttpUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.List;
 
 /**
  * Created by Kevin on 2017/6/21.
@@ -35,8 +35,13 @@ public class HelloCollector {
             if ("ok".equals(status)){
                 String heWeather5 = jsonObject.getJSONArray("HeWeather5").getString(0);
                 weather = JSON.parseObject(heWeather5, Weather.class);
+                //将实时天气Code转换为天气图标的class
                 Weather.Now.Cond cond = weather.getNow().getCond();
                 cond.setCode(parseCode(cond.getCode()));
+                List<Weather.DailyForecast> daily_forecast = weather.getDaily_forecast();
+                for (Weather.DailyForecast df : daily_forecast){
+                    df.getCond().setCode_d(parseCode(df.getCond().getCode_d()));
+                }
             }
         }
         model.addAttribute("weather",weather);

@@ -39,7 +39,12 @@
             </table>
         </div>
         <div class="daily_forecast">
-
+            <div th:each="df,dfStat : ${weather.daily_forecast}">
+                <span class="t-center w-2 fs-14" th:text="${#strings.substring(df.date,5)}"></span>
+                <i th:class="${df.cond.code_d} +' iconfont small-icon'"></i>
+                <span class="t-left pl-10 w-2 fs-14" th:text="${df.cond.txt_d}"></span>
+                <span class="t-center w-2 fs-14" th:text="${df.tmp.min}+'-'+${df.tmp.max}+'℃'"></span>
+            </div>
         </div>
     </div>
 </body>
