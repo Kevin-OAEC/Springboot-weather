@@ -31,5 +31,5 @@ SpringBoot+thymeleaf实现简单天气预报
 
 ## 使用方式
 
-* 直接访问：localhost:8080/hello -->默认加载济宁的天气
-* 指定城市：localhost:8080/hello?city=城市名
+* 直接访问：http://59.110.156.116:8080/hello -->默认加载济宁的天气
+* 指定城市：http://59.110.156.116:8080/hello?city=城市名
